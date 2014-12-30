@@ -4,9 +4,9 @@ class Ymdtree
 	class << self
 		def init(blog_data)
 			blog_data.articles.each{|article|
-					year_value = article.date.localtime.year
-					month_value =article.date.localtime.month
-					day_value =article.date.localtime.day
+					year_value = article.date.gmtime.year
+					month_value =article.date.gmtime.month
+					day_value =article.date.gmtime.day
 					add(year_value, month_value, day_value)
 			}
 		end
