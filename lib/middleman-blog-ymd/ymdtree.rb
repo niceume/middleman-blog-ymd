@@ -8,7 +8,6 @@ class Ymdtree
 					month_value =article.date.localtime.month
 					day_value =article.date.localtime.day
 					add(year_value, month_value, day_value)
-				end
 			}
 		end
 		def hash
