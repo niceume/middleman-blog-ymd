@@ -4,10 +4,9 @@ class Ymdtree
 	class << self
 		def init(blog_data)
 			blog_data.articles.each{|article|
-				if article.path =~ /^(\d+)\/(\d+)\/(\d+)_/
-					year_value = $1.to_i
-					month_value = $2.to_i
-					day_value = $3.to_s[6..7].to_i
+					year_value = article.date.localtime.year
+					month_value =article.date.localtime.month
+					day_value =article.date.localtime.day
 					add(year_value, month_value, day_value)
 				end
 			}
