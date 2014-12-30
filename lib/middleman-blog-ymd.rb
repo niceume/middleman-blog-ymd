@@ -9,17 +9,17 @@ class YmdExtension < ::Middleman::Extension
   end
 
   helpers do
-#		def ymdtree
-#			Ymdtree.init(blog)
-#			return Ymdtree
-#		end
+		def ymdtree_of(blog)
+			Ymdtree.init(blog)
+			return Ymdtree
+		end
 
-    def blog_years
+    def years_of(blog)
 			Ymdtree.init(blog)
 			return Ymdtree.years
     end
 
-		def blog_year_month_hash
+		def year_months_hash_of(blog)
 			Ymdtree.init(blog)
 			ymhash = Hash.new
 			Ymdtree.hash.each{ |k, v|
