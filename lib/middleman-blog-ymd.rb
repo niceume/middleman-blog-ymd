@@ -14,12 +14,12 @@ class YmdExtension < ::Middleman::Extension
 			return Ymdtree
 		end
 
-    def years_of(blog)
+    def ymd_years_of(blog)
 			Ymdtree.init(blog)
 			return Ymdtree.years
     end
 
-		def year_months_hash_of(blog)
+		def ymd_year_months_hash_of(blog)
 			Ymdtree.init(blog)
 			ymhash = Hash.new
 			Ymdtree.hash.each{ |k, v|
@@ -27,6 +27,17 @@ class YmdExtension < ::Middleman::Extension
 		  }
 			return ymhash
 		end
+
+		def ymd_next_month_of( blog, year, month)
+			Ymdtree.init(blog)
+			return Ymdtree.next_month(year, month)
+		end
+
+		def ymd_prev_month_of( blog, year, month)
+			Ymdtree.init(blog)
+			return Ymdtree.previous_month(year, month)
+		end
+
   end
 end
 
