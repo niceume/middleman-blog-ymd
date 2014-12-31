@@ -41,30 +41,35 @@ All the helper methods' names  begin with "ymd". This avoids method name conflic
 
 * ymd_year_months_hash_of(blog)
   + returns pairs of year and month"S" having articles in Hash. 
-  + The returned hash is like this,  ( e.g.  { 2013 => [1,2,3,4,5,6,7,8,9], 2014 => [1,2,3,4,5,6,7,8,9] } )
+  + The returned hash is like this,  
+
+~~~ Ruby
+{ 2013 => [1,2,3,4,5,6,7,8,9], 2014 => [1,2,3,4,5,6,7,8,9] } )
+~~~
 
 * ymd_next_month_of(blog, current_year, current_month)
 * ymd_prev_month_of(blog, current_year, current_month)
-
   + These methods return next month or previous month WHICH HAVE ARTICLES. Current year and month should be specified in argument by integer.
 
-Example
-
-    ymd_next_month_of(blog, 2014, 1 ) # returns next month having articles of 2014 Jan.
+~~~ Ruby
+# Example
+ymd_next_month_of(blog, 2014, 1 ) # returns next month having articles of 2014 Jan.
+~~~
 
 This returns a month number (e.g. 1, 2, 3, 4, ... 9, 10, 11,12 ).
 If you want to get a two digit value, use ruby method 
-
-    "%02d".%( integer )
+~~~~ Ruby
+"%02d".%( integer )
+~~~~
 
 which converts integer into two digits.
 
 If you want to get short name of the month from the number
-
-    Date::MONTHNAMES[ integer ]
-
+~~~~ Ruby
+Date::MONTHNAMES[ integer ]
+~~~~
 
 ## ToDo
 
-In version 0.5, every time the ymd methods is called, Ymdtree is 
+In version 0.5, every time the ymd methods is called, Ymdtree is regenerated. This makes the build process slow. But good for Live Preview. I'd like to change this behavior based on "during build" or "live preview". My idea now is to make an option in this gem and change the option value in Rspec.
 
