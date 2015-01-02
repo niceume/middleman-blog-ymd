@@ -25,6 +25,47 @@ class Ymdtree
 		def days_of( y, m )
 			@hash[y][m].keys
 		end
+
+		def previous_year(y)
+			ys = years
+			sorted_ys = ys.sort
+			yidx = sorted_ys.index(y)
+			case yidx
+			when 0
+				return nil
+			when nil
+				raise Error , "argument year doesn't exist"
+			else
+				return sorted_ys[yidx - 1]
+			end
+		end
+
+		def next_year(y)
+			ys = years
+			sorted_ys = ys.sort
+			yidx = sorted_ys.index(y)
+			case yidx
+			when (sorted_ys.length - 1)
+				return nil
+			when nil
+				raise Error , "argument year doesn't exist"
+			else
+				return sorted_ys[yidx + 1]
+			end
+		end
+
+		def last_month_of_year(y)
+			ms = @hash[y].keys
+			sorted_ms = ms.sort
+			sorted_ms.last
+		end
+
+		def first_month_of_year(y)
+			ms = @hash[y].keys
+			sorted_ms = ms.sort
+			sorted_ms.first
+		end
+
 		def previous_month( y , m)
 			month_array = @hash[y].to_a
 			month_array = month_array.collect{|month|
@@ -32,11 +73,17 @@ class Ymdtree
 			}
 			m_idx = month_array.index(m)
 			if m_idx == ( month_array.length - 1 )
-				return false
+				if previous_year(y)
+					return [ previous_year(y), last_month_of_year( previous_year(y) )] 
+					# preious year of last month
+				else
+					return nil
+				end
 			else
-				return month_array[ m_idx + 1 ]
+				return [ y, month_array[ m_idx + 1 ] ]
 			end
 		end
+
 		def next_month( y , m)
 			month_array = @hash[y].to_a
 			month_array = month_array.collect{|month|
@@ -44,9 +91,14 @@ class Ymdtree
 			}
 			m_idx = month_array.index(m)
 			if m_idx == 0
-				return false
+				if next_year(y)
+					return [ next_year(y), first_month_of_year( next_year(y) ) ] 
+					# preious year of last month
+				else
+					return nil
+				end
 			else 
-				return month_array[ m_idx - 1 ]
+				return [y , month_array[ m_idx - 1 ] ]
 			end
 		end
 	end

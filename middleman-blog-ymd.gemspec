@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["toshi@niceume.com"]
   spec.summary       = %q{years months days (for middleman-blog).}
   spec.description   = %q{years months days support for middleman-blog.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/niceume/middleman-blog-ymd"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

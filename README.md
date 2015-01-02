@@ -56,7 +56,14 @@ All the helper methods' names  begin with "ymd". This avoids method name conflic
 ymd_next_month_of(blog, 2014, 1 ) # returns next month having articles of 2014 Jan.
 ~~~
 
-This returns a month number (e.g. 1, 2, 3, 4, ... 9, 10, 11,12 ).
+This returns a pair of year and month number in Array (e.g. [ 2014, 1 ] [2015, 2] ). If you want to access its year its index is 0, the month, its index 1.
+
+~~~ Ruby
+# Example
+
+
+~~~
+
 If you want to get a two digit value, use ruby method 
 ~~~~ Ruby
 "%02d".%( integer )
