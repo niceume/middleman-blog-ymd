@@ -58,15 +58,17 @@ ymd_next_month_of(blog, 2014, 1 ) # returns next month having articles of 2014 J
 
 This returns a pair of year and month number in Array (e.g. [ 2014, 1 ] [2015, 2] ). If you want to access its year its index is 0, the month, its index 1.
 
-~~~ Ruby
-# Example
-
+~~~ HAML
+# HAML View Example
+- previous_month = ymd_prev_month_of(blog, article_date.year, article_date.month)
+- if previous_month
+  = link_to( "Prev Month", "/#{previous_month[0]}/#{sprintf("%02d", previous_month[1])}.html" )
 
 ~~~
 
 If you want to get a two digit value, use ruby method 
 ~~~~ Ruby
-"%02d".%( integer )
+"%02d".%( integer )  # or use sprintf method
 ~~~~
 
 which converts integer into two digits.
